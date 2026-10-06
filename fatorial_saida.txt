@@ -1,0 +1,103 @@
+resultado da analise do arquivo fatorial.elgol:
+
+
+LISTA DE TOKENS (79)
+  #   LIN:COL  TOKEN      PALAVRA    ATRIBUTO
+  1   4:1      DECIMAL    DECIMAL
+  2   4:9      FUNCAO     $Fatorial  símbolo 1
+  3   4:19     ABRE_PAR   (
+  4   4:20     DECIMAL    DECIMAL
+  5   4:28     ID         Numero     símbolo 2
+  6   4:34     FECHA_PAR  )
+  7   4:36     PONTO      .
+  8   5:1      INICIO     inicio
+  9   5:8      PONTO      .
+  10  6:5      DECIMAL    DECIMAL
+  11  6:13     ID         Resultado  símbolo 3
+  12  6:23     PONTO      .
+  13  7:5      ID         Resultado  símbolo 3
+  14  7:15     ATRIB      =
+  15  7:20     PONTO      .
+  16  8:5      ENQUANTO   enquanto
+  17  8:14     ID         Numero     símbolo 2
+  18  8:21     MAIOR      maior
+  19  8:27     NUM        1          valor 1
+  20  8:29     PONTO      .
+  21  9:5      INICIO     inicio
+  22  9:12     PONTO      .
+  23  10:9     ID         Resultado  símbolo 3
+  24  10:19    ATRIB      =
+  25  10:21    ID         Resultado  símbolo 3
+  26  10:31    MULT       x
+  27  10:40    PONTO      .
+  28  11:9     ID         Numero     símbolo 2
+  29  11:16    ATRIB      =
+  30  11:18    ID         Numero     símbolo 2
+  31  11:25    MENOS      -
+  32  11:27    NUM        1          valor 1
+  33  12:5     FIM        fim
+  34  12:9     PONTO      .
+  35  13:5     ELGIO      elgio
+  36  13:11    ATRIB      =
+  37  13:13    ID         Resultado  símbolo 3
+  38  13:23    PONTO      .
+  39  14:1     FIM        fim
+  40  14:5     PONTO      .
+  41  17:1     INICIO     inicio
+  42  17:8     PONTO      .
+  43  18:5     DECIMAL    DECIMAL
+  44  18:21    PONTO      .
+  45  19:5     DECIMAL    DECIMAL
+  46  19:13    ID         Saida      símbolo 4
+  47  19:19    PONTO      .
+  48  20:5     ID         Valor      símbolo 5
+  49  20:11    ATRIB      =
+  50  20:13    NUM        5          valor 5
+  51  20:15    PONTO      .
+  52  21:5     SE         se
+  53  21:8     ID         Valor      símbolo 5
+  54  21:14    MENOR      menor
+  55  21:24    PONTO      .
+  56  22:5     ENTAO      entao
+  57  22:11    PONTO      .
+  58  23:5     INICIO     inicio
+  59  23:12    PONTO      .
+  60  24:9     ID         Saida      símbolo 4
+  61  24:15    ATRIB      =
+  62  24:17    ZERO       _Z_        valor 0
+  63  24:21    PONTO      .
+  64  25:5     FIM        fim
+  65  25:9     PONTO      .
+  66  26:5     SENAO      senao
+  67  26:11    PONTO      .
+  68  27:5     INICIO     inicio
+  69  27:12    PONTO      .
+  70  28:9     ID         Saida      símbolo 4
+  71  28:15    ATRIB      =
+  72  28:27    ABRE_PAR   (
+  73  28:28    ID         Valor      símbolo 5
+  74  28:33    FECHA_PAR  )
+  75  28:35    PONTO      .
+  76  29:5     FIM        fim
+  77  29:9     PONTO      .
+  78  30:1     FIM        fim
+  79  30:5     PONTO      .
+
+TABELA DE SÍMBOLOS (5)
+  ÍNDICE  PALAVRA    CATEGORIA  1ª OCORR.  QTD  LINHAS
+  1       $Fatorial  FUNCAO     4:9        1    4
+  2       Numero     ID         4:28       4    4, 8, 11
+  3       Resultado  ID         6:13       5    6, 7, 10, 13
+  4       Saida      ID         19:13      3    19, 24, 28
+  5       Valor      ID         20:5       3    20, 21, 28
+
+ERROS LÉXICOS (6)
+  linha 7, coluna 17: '01' não é um número válido: número não pode começar com 0
+  linha 10, coluna 33: 'numero' não é um identificador válido: não começa com letra maiúscula
+  linha 11, coluna 29: caractere inválido ';' (U+003B)
+  linha 18, coluna 13: 'Entrada' não é um identificador válido: começa com a vogal 'E' (deve começar com consoante maiúscula)
+  linha 21, coluna 20: '_z_' não é um identificador válido: não começa com letra maiúscula; contém caracteres que não são letras A-Z/a-z: '_'; tem 3 caractere(s); o mínimo é 4; não termina com letra minúscula (você quis dizer '_Z_'?)
+  linha 28, coluna 17: '$fatorial' não é um nome de função válido: não começa com letra maiúscula
+
+RESULTADO: 6 erros léxicos (79 tokens, 5 símbolos)
+

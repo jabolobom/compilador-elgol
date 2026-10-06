@@ -1,0 +1,27 @@
+* Linguagem de programacao Elgol
+* Autor Elgio Schlemer
+ 
+* Funcoes
+DECIMAL $Soma (DECIMAL Numm, DECIMAL Dois) .
+inicio .
+    elgio = Numm + Doiss .
+fim .
+ 
+* Codigo principal 
+inicio .
+  DECIMAL Lixo . * minha variável numerica de nome Lixo
+  DECIMAL Teste .
+  DECIMAL Vim .   * Erro lexico no Vim. Não é identificador
+  
+  Lixo = 34 .
+  _NEG_ Lixo .
+ 
+  se Lixo maior _Z_ .
+  entao.
+  inicio.
+        Lixo = _Z_.
+        Teste = 3 EXP 4 .
+        Lixo = 13 RESTO 4 .
+        Resultado = $Soma (Lixo, Teste) .
+  fim.
+fim .

@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+parser.out
+parsetab.py
+lextab.py

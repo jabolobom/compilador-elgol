@@ -1,0 +1,51 @@
+* Operacoes matematicas em Elgol
+
+* Funcoes
+DECIMAL $Potencia (DECIMAL Base, DECIMAL Grau) .
+inicio .
+    elgio = Base EXP Grau .
+fim .
+
+DECIMAL $Media (DECIMAL Primeiro, DECIMAL Segundo) .
+inicio .
+    elgio = Primeiro + Segundo / 2 .
+fim .
+
+* Codigo principal
+inicio .
+    DECIMAL Total .
+    DECIMAL Sobra .
+    DECIMAL Contador .
+
+    Total = $Potencia (2, 10) .
+    Sobra = Total RESTO 7 .
+
+    para Contador = 1 .
+    inicio .
+        Total = Total - Contador .
+    fim .
+
+    se Sobra igual _Z_ .
+    entao .
+    inicio .
+        Total = $Media (Total, Sobra) .
+    fim .
+
+    se Total MIgual 100 .
+    entao .
+    inicio .
+        _NEG_ Total .
+    fim .
+
+    se Sobra diferente 3 .
+    entao .
+    inicio .
+        Sobra = Sobra x 2 .
+    fim .
+
+    se Contador migual 10 .
+    entao .
+    inicio .
+        Contador = Contador + 1 .
+    fim .
+fim .

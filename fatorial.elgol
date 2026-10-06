@@ -1,0 +1,30 @@
+* Calculo de fatorial em Elgol
+
+* Funcoes
+DECIMAL $Fatorial (DECIMAL Numero) .
+inicio .
+    DECIMAL Resultado .
+    Resultado = 01 .
+    enquanto Numero maior 1 .
+    inicio .
+        Resultado = Resultado x numero .
+        Numero = Numero - 1 ;
+    fim .
+    elgio = Resultado .
+fim .
+
+* Codigo principal
+inicio .
+    DECIMAL Entrada .
+    DECIMAL Saida .
+    Valor = 5 .
+    se Valor menor _z_ .
+    entao .
+    inicio .
+        Saida = _Z_ .
+    fim .
+    senao .
+    inicio .
+        Saida = $fatorial (Valor) .
+    fim .
+fim .
