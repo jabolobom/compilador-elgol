@@ -10,7 +10,7 @@
 ## Instalação
 
 ```bash
-cd "compilador elgol"
+cd "compilador-elgol-main"
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ```
@@ -18,7 +18,7 @@ python3 -m venv .venv
 No Windows (PowerShell):
 
 ```powershell
-cd "compilador elgol"
+cd "compilador-elgol-main"
 py -m venv .venv
 .venv\Scripts\pip install -r requirements.txt
 ```
@@ -34,7 +34,7 @@ py -m venv .venv
 # vários arquivos de uma vez
 .venv/bin/python main.py enunciado.elgol enunciado_arrumado.elgol
 
-# arquivos que inclui pr testar
+# arquivos que inclui pra testar
 # enunciado_arrumado.elgol - o mesmo do enunciado só que sem o erro léxico
 # fatorial.elgol - vai ter vários erros
 # operacoes.elgol - não deve apresentar nenhum erro
@@ -44,14 +44,14 @@ cat fatorial.elgol | .venv/bin/python main.py -
 ```
 
 O relatório é mostrado no terminal e também gravado em um `.txt` na mesma pasta
-do arquivo analisado (`enunciado.elgol` → `enunciado_saida.txt`). Na entrada
-padrão, o arquivo gravado é `saida.txt`, na pasta atual. Se o `.txt` já
-existir, ele é sobrescrito.
+do arquivo analisado (`nomearquivo-saida.txt`).
+
+Se o `.txt` já existir, ele é sobrescrito.
 
 Códigos de saída: `0` = nenhum erro léxico, `1` = há erros léxicos,
 `2` = arquivo não pôde ser lido ou o `.txt` não pôde ser gravado.
 
-Exemplo de saída (trecho do exemplo do enunciado):
+Exemplo do output:
 
 ```
 TABELA DE SÍMBOLOS (7)
