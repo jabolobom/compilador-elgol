@@ -2,7 +2,7 @@
 * Autor Elgio Schlemer
  
 * Funcoes
-DECIMAL $Soma (DECIMAL Numm, DECIMAL Dois) .
+DECIMAL $Soma3 (DECIMAL Numm, DECIMAL Dois) .
 inicio .
     elgio = Numm + Doiss .
 fim .
@@ -20,7 +20,7 @@ inicio .
   entao.
   inicio.
         Lixo = _Z_.
-        Teste = 3 EXP 4 .
+        Teste = 3 EXP 04 .
         Lixo = 13 RESTO 4 .
         Resultado = $Soma (Lixo, Teste) .
   fim.

@@ -1,0 +1,7 @@
+* com erros lexicos
+DECIMAL $Fazalgo2 (DECIMAL Fazum, DECIMAL Faz2) .
+inicio.
+   DECIMAL Variável .
+   Fazum = 0;
+   Fazum = 45 vezes 20 .
+fim.

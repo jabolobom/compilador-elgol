@@ -20,7 +20,7 @@ inicio .
     Total = $Potencia (2, 10) .
     Sobra = Total RESTO 7 .
 
-    para Contador = 1 .
+    para Contador 10 .
     inicio .
         Total = Total - Contador .
     fim .
@@ -30,11 +30,17 @@ inicio .
     inicio .
         Total = $Media (Total, Sobra) .
     fim .
+    senao .
+    inicio .
+    fim .
 
-    se Total MIgual 100 .
+    se Total Migual 100 .
     entao .
     inicio .
         _NEG_ Total .
+    fim .
+    senao .
+    inicio .
     fim .
 
     se Sobra diferente 3 .
@@ -42,10 +48,16 @@ inicio .
     inicio .
         Sobra = Sobra x 2 .
     fim .
+    senao .
+    inicio .
+    fim .
 
     se Contador migual 10 .
     entao .
     inicio .
         Contador = Contador + 1 .
+    fim .
+    senao .
+    inicio .
     fim .
 fim .

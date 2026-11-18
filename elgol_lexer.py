@@ -22,7 +22,7 @@ reservadas = {
     'igual': 'IGUAL',
     'diferente': 'DIFERENTE',
     'migual': 'MIGUAL_MIN',  
-    'MIgual': 'MIGUAL_MAI',  
+    'Migual': 'MIGUAL_MAI',  
 }
 
 operadores_palavra = {
@@ -42,6 +42,7 @@ tokens = [
     'VIRGULA',  # ,  
     'ABRE_PAR',  # (
     'FECHA_PAR',  # )
+    'NL', # new line, ia quebrar o parser se nao tivesse.
 ] + list(reservadas.values())
 
 
@@ -67,10 +68,10 @@ class Simbolo:
 
 class TabelaSimbolos:
     def __init__(self):
-        self._simbolos = {}  # palavra -> Simbolo (dict preserva a ordem de inserção)
+        self._simbolos = {}  # palavra -> Simbolo (dict mantem order 
 
     def registrar(self, palavra, categoria, linha, coluna):
-        """Insere o símbolo (se novo), anota a ocorrência e devolve o índice."""
+        # Insere o símbolo (se novo), anota a ocorrência e retorna index
         simbolo = self._simbolos.get(palavra)
         if simbolo is None:
             simbolo = Simbolo(len(self._simbolos) + 1, palavra, categoria, linha, coluna)
@@ -100,7 +101,7 @@ class ErroLexico:
 
 
 def coluna(lexdata, lexpos):
-    """Coluna (1-based) de uma posição absoluta do texto."""
+    # Coluna posicao do texto
     return lexpos - (lexdata.rfind('\n', 0, lexpos) + 1) + 1
 
 
@@ -172,9 +173,10 @@ t_ABRE_PAR = r'\('
 t_FECHA_PAR = r'\)'
 
 
-def t_newline(t):
-    r'\n+'
-    t.lexer.lineno += len(t.value)
+def t_NL(t):
+    r'\n(?:[ \t\r]*(?:\*[^\n]*)?\n)*'
+    t.lexer.lineno += t.value.count('\n')
+    return t
 
 
 def t_FUNCAO(t):
@@ -258,11 +260,13 @@ class ResultadoLexico:
         return not self.erros
 
 
-def analisar(codigo): 
+def analise_lexer(codigo): 
     lexer = criar_lexer()
     lexer.input(codigo)
     lista = []
     for t in lexer:
+        if t.type == 'NL': continue # skipar nls, nao precisa aparecer na lista de token
+
         if t.type in ('ID', 'FUNCAO'):
             atributo = lexer.tabela.buscar(t.value).indice
         elif t.type == 'NUM':

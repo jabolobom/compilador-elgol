@@ -1,0 +1,27 @@
+* erros sintáticos
+DECIMAL $Fazalgo(DECIMAL Fazum, DECIMAL). * falta id depois do numero
+inicio                                              * faltou .
+   DECIMAL Lixo.
+   
+   Lixo = Fazum - Fazdois + _Z_ x. * operador x precisa de 2 operandos
+   elgio = Lixo + $Soma(20,30).     * elgio não permite ter função
+fim.
+
+inicio.
+  DECIMAL Variavel, Lixo.   * Não pode ter , aqui
+  DECIMAL Teste.
+  
+  Variavel = _Z_.
+  
+  Teste = 45 x $Fazalgo (50, Variavel).
+  
+  se Teste maior _Z_.
+  entao.
+  inicio.
+    Variavel = Teste igual Lixo. * Somente expressoes matematicas
+  fim.
+  * erro Faltou senao
+  
+  Variavel = Variavel + Nova + 3 - 5 x 2 / 2 + Teste.
+  * semântico: Nova não foi declarada. Não implementar
+fim.

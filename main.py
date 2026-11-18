@@ -2,7 +2,8 @@ import argparse
 import sys
 from pathlib import Path
 
-from elgol_lexer import analisar
+from elgol_lexer import analise_lexer
+from elgol_parser import analise_sintaxe
 
 def ler_input(caminho):
     if caminho == '-':
@@ -33,7 +34,7 @@ def _atributo(token):
     return ''
 
 
-def relatoriotxt(nome, resultado):
+def relatoriotxt(nome, resultado, erros_sint):
     partes = ['resultado da analise do arquivo' f' {nome}:\n']
     partes.append(f'\nLISTA DE TOKENS ({len(resultado.tokens)})')
     linhas = [
@@ -62,8 +63,19 @@ def relatoriotxt(nome, resultado):
         partes.append(f'\nERROS LÉXICOS ({len(resultado.erros)})')
         partes.extend(f'  {erro}' for erro in resultado.erros)
 
+    if erros_sint:
+        partes.append(f'\nERROS SINTÁTICOS ({len(erros_sint)})')
+        partes.extend(f"  linha {linha}: erro de sintaxe próximo de '{palavra}'" for linha, palavra in erros_sint)
+
     n = len(resultado.erros)
-    situacao = 'OK, nenhum erro léxico' if n == 0 else f"{n} {'erros léxicos' if n > 1 else 'erro léxico'}"
+    m = len(erros_sint)
+    if n == 0 and m == 0:
+        situacao = 'OK, nenhum erro'
+    else:
+        situacao = (
+            f"{n} {'erros léxicos' if n != 1 else 'erro léxico'}, "
+            f"{m} {'erros sintáticos' if m != 1 else 'erro sintático'}"
+        )
     partes.append(
         f'\nRESULTADO: {situacao} '
         f"({_plural(len(resultado.tokens), 'token')}, {_plural(len(resultado.tabela), 'símbolo')})\n"
@@ -81,7 +93,7 @@ def caminho_saida(caminho):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(
-        prog='main.py', description='Analisador léxico de ELGOL em PLY'
+        prog='main.py', description='Analisador léxico e sintático de ELGOL em PLY'
     )
     parser.add_argument('arquivos', nargs='+', metavar='ARQUIVO', help="código Elgol ('-' = stdin)")
     args = parser.parse_args(argv)
@@ -100,11 +112,11 @@ def main(argv=None):
             codigo_saida = 2
             continue
 
-        resultado = analisar(codigo)
-        if not resultado.ok and codigo_saida == 0:
-            codigo_saida = 1
+        resultado_lexer = analise_lexer(codigo)
+        resultado_sintaxe = analise_sintaxe(codigo)
+        if (not resultado_lexer.ok or resultado_sintaxe) and codigo_saida == 0: codigo_saida = 1
 
-        relatorio = relatoriotxt(nome, resultado)
+        relatorio = relatoriotxt(nome, resultado_lexer, resultado_sintaxe)
         print(relatorio)
         destino = caminho_saida(caminho)
         try:

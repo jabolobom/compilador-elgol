@@ -1,0 +1,22 @@
+* Linguagem Elgol
+* autor Elgio Schlemer
+* sem erros
+DECIMAL $Fazalgo (DECIMAL Fazum, DECIMAL Fazdois) .
+inicio .
+   DECIMAL Lixo .
+   
+   Lixo = Fazum x Fazdois + _Z_ .
+   elgio = Lixo .
+fim .
+
+* programa principal, fora de função
+* deve começar também com inicio e fim que seriam os
+* { e } do C
+inicio .
+  DECIMAL Variavel .
+  DECIMAL Teste .
+  
+  Variavel = _Z_ .
+  Teste = 45 x $Fazalgo (45, Variavel) .  
+  Variavel = Variavel + 3 - 5 x 2 / 2 + Teste .
+fim.

@@ -1,0 +1,37 @@
+* Linguagem Elgol
+* autor Elgio Schlemer
+* exemplo 4
+DECIMAL $Fazalgo (DECIMAL Fazum, DECIMAL Fazdois).
+inicio.
+   DECIMAL Lixo.
+   DECIMAL Lixox.
+   
+   Lixo = Fazum x Fazdois + _Z_.
+   Fazum = Lixox - Fazdois + 34 - _Z_ x 15 / 3 x 4 - 87 + Fazum.
+   elgio = Fazum.
+fim.
+
+inicio.
+  DECIMAL Variavel.
+  DECIMAL Teste.
+  Decimal Varx.
+  
+  Variavel = _Z_. 
+  Variaval = Teste + _z_ .
+  Teste = 45 x $Fazalgo (45, Variavel).
+  
+  Varx = $Fazalgo (Teste, _Z_).   * Comentario aqui
+  
+  se Varx maior Variavel.
+  entao.
+  inicio.
+      Varx = Varx x $Fazalgo(Variavel, _Z_).
+      Teste = 45.
+  fim.
+  senao.
+  inicio.
+      Varx = _Z_.
+  fim.
+  
+  Variavel = Variavel + 3 - 5 x 2 / 2 + Teste.
+fim.
