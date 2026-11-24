@@ -2,8 +2,6 @@
 
 [regras_lexicas.md](regras_lexicas.md)
 
-[regras_sintaticas.md](regras_sintaticas.md)
-
 ## Requisitos
 
 - Python 3
@@ -31,19 +29,19 @@ py -m venv .venv
 
 ```bash
 # relatório completo: tokens, tabela de símbolos, erros léxicos e sintáticos
-.venv/bin/python main.py enunciado.elgol
+.venv/bin/python src/main.py exemplos/enunciado.elgol
 
 # vários arquivos de uma vez
-.venv/bin/python main.py enunciado.elgol enunciado_arrumado.elgol
+.venv/bin/python src/main.py exemplos/enunciado.elgol exemplos/enunciado_arrumado.elgol
 
-# arquivos que inclui pra testar
+# arquivos que inclui pra testar (pasta exemplos/)
 # enunciado_arrumado.elgol - o mesmo do enunciado só que sem os erros léxicos (ainda tem 1 erro sintático: falta o senao)
 # fatorial.elgol - vai ter vários erros
 # operacoes.elgol - não deve apresentar nenhum erro
 # exemplo1.elgol ... exemplo5.elgol - exemplos do enunciado da etapa 2 (só o exemplo1 não tem erros)
 
 # ler o código da entrada padrão
-cat fatorial.elgol | .venv/bin/python main.py -
+cat exemplos/fatorial.elgol | .venv/bin/python src/main.py -
 ```
 
 O relatório é mostrado no terminal e também gravado em um `.txt` na mesma pasta
@@ -54,8 +52,8 @@ Se o `.txt` já existir, ele é sobrescrito.
 Códigos de saída: `0` = nenhum erro, `1` = há erros léxicos ou sintáticos,
 `2` = arquivo não pôde ser lido ou o `.txt` não pôde ser gravado.
 
-Na execução o PLY gera `parsetab.py` e `parser.out` (estados e conflitos da gramática) na pasta do
-projeto. Os dois estão no `.gitignore`.
+Na execução o PLY gera `parsetab.py` e `parser.out` (estados e conflitos da gramática) na pasta
+`src/`. Os dois estão no `.gitignore`.
 
 Exemplo do output:
 
