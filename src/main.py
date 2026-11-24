@@ -118,12 +118,6 @@ def main(argv=None):
 
         relatorio = relatoriotxt(nome, resultado_lexer, resultado_sintaxe)
         print(relatorio)
-        destino = caminho_saida(caminho)
-        try:
-            destino.write_text(relatorio + '\n', encoding='utf-8')
-        except OSError as erro:
-            print(f'main.py: não foi possível gravar {destino}: {erro.strerror}', file=sys.stderr)
-            codigo_saida = 2
 
     return codigo_saida
 

@@ -1,10 +1,10 @@
 import ply.yacc
-from elgol_lexer import criar_lexer, tokens
+from elgol_lexer import criar_lexer, tokens # precisa importar tokens, yacc() falha se nao tiver lista de token definida
 
-start = 'programa'
+start = 'programa' # define o simbolo inicial, se nao tivesse isso ele pega o primeiro p_ e usa como start, nesse caso aqui seria fim_cmd
 ### GRAMATICA
 ### ###
-def p_fim_cmd(p): 'fim_cmd : PONTO NL'
+def p_fim_cmd(p): 'fim_cmd : PONTO NL' # fim do comando, ponto e newline, pro parser saber que a linha acabou e tem q parar de ler
 
 def p_valor(p): # os pipes | indicam a possibilidade, tem que ser em newline se nao ele surta
     '''valor : ID
@@ -29,7 +29,7 @@ def p_op_rel(p): # operacao relacao, "if"
 
 def p_vazio(p): 'vazio : '
 
-def p_operando(p):
+def p_operando(p):  # esse negocio de regra sintatica é muito ruim de entender, estar em portugues atrapalha mais ainda
     '''operando : valor
                 | chamada'''
 
@@ -43,8 +43,8 @@ def p_argumentos(p):
     '''argumentos : argumentos VIRGULA valor
                   | valor'''
 
-def p_expressao_simples(p): # palavra reservada elgio
-    '''expressao_simples : expressao_simples op_mat valor
+def p_expressao_elgio(p): # palavra reservada elgio
+    '''expressao_elgio : expressao_elgio op_mat valor
                          | valor'''
 
 # comandos, declaracao atrib, retorno, negar, condicional, while
@@ -52,7 +52,7 @@ def p_declaracao(p): 'declaracao : DECIMAL ID fim_cmd'
 
 def p_atribuicao(p): 'atribuicao : ID ATRIB expressao fim_cmd'
 
-def p_retorno(p): 'retorno : ELGIO ATRIB expressao_simples fim_cmd'
+def p_retorno(p): 'retorno : ELGIO ATRIB expressao_elgio fim_cmd'
 
 def p_negacao(p): 'negacao : NEG ID fim_cmd'
 
@@ -85,7 +85,7 @@ def p_enquanto(p): 'enquanto : ENQUANTO condicao fim_cmd bloco'
 def p_para(p): 'para : PARA ID valor fim_cmd bloco'
 
 # programa, funcoes, parametros
-def p_programa(p): 'programa : nl_opt funcoes bloco'
+def p_programa(p): 'programa : nl_opt funcoes bloco' # SIMBOLO INICIAL DA GRAMATICA !!!
 
 def p_nl_opt(p): # newline opcional, tem prgroama q começa com comment q fica como nl
     '''nl_opt : NL
@@ -112,7 +112,7 @@ def p_error(t):
 
     return erros_sintaticos.append(e);
 
-parser = ply.yacc.yacc(debug=True)
+parser = ply.yacc.yacc(debug=True) # isso aqui silenciosamente usa o "tokens"
 
 def analise_sintaxe(codigo):
     erros_sintaticos.clear()

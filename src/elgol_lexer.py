@@ -175,6 +175,7 @@ t_FECHA_PAR = r'\)'
 
 def t_NL(t):
     r'\n(?:[ \t\r]*(?:\*[^\n]*)?\n)*'
+    # \n new line, dai zero ou mais linha inteira feita de espaco ou /tab/r, talvez um *comentario* e /new line dnv
     t.lexer.lineno += t.value.count('\n')
     return t
 
